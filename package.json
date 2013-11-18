@@ -1,7 +1,7 @@
 {
-  "author": "Ben Newman <bn@cs.stanford.edu>",
-  "name": "regenerator",
-  "description": "Source transformer enabling ECMAScript 6 generator functions (yield) in JavaScript-of-today (ES5)",
+  "author": "Nathan Wall,Ben Newman <bn@cs.stanford.edu>",
+  "name": "progenerator",
+  "description": "Generator transpiler for the Proto language",
   "keywords": [
     "generator",
     "yield",
@@ -14,18 +14,18 @@
     "refactoring",
     "transpiler",
     "desugaring",
-    "ES6"
+    "Proto"
   ],
-  "version": "0.2.10",
-  "homepage": "http://github.com/facebook/regenerator",
+  "version": "0.0.1",
+  "homepage": "http://github.com/Nathan-Wall/progenerator",
   "repository": {
     "type": "git",
-    "url": "git://github.com/facebook/regenerator.git"
+    "url": "git://github.com/Nathan-Wall/progenerator.git"
   },
   "main": "main.js",
-  "bin": "bin/regenerator",
+  "bin": "bin/progenerator",
   "scripts": {
-    "test": "node test/run.js"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "commander": "~2.0.0",

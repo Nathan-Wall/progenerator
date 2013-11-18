@@ -21,40 +21,26 @@ assert.ok(
   "Bad esprima version: " + esprimaHarmony.version
 );
 
-function regenerator(source, options) {
-  if (!options) {
-    options = {
-      includeRuntime: false
-    };
-  }
-
-  var runtime = options.includeRuntime ? fs.readFileSync(
-    regenerator.runtime.dev, "utf-8"
-  ) + "\n" : "";
+function progenerator(source) {
 
   if (!genFunExp.test(source)) {
-    return runtime + source; // Shortcut: no generators to transform.
+    return source; // Shortcut: no generators to transform.
   }
 
   var recastOptions = {
     tabWidth: guessTabWidth(source),
-    // Use the harmony branch of Esprima that installs with regenerator
+    // Use the harmony branch of Esprima that installs with progenerator
     // instead of the master branch that recast provides.
     esprima: esprimaHarmony
   };
 
   var ast = recast.parse(source, recastOptions);
   var es5 = recast.print(transform(ast), recastOptions);
-  return runtime + es5;
+  return es5;
 }
 
-// To modify an AST directly, call require("regenerator").transform(ast).
-regenerator.transform = transform;
+// To modify an AST directly, call require("progenerator").transform(ast).
+progenerator.transform = transform;
 
-regenerator.runtime = {
-  dev: path.join(__dirname, "runtime", "dev.js"),
-  min: path.join(__dirname, "runtime", "min.js")
-};
-
-// To transform a string of ES6 code, call require("regenerator")(source);
-module.exports = regenerator;
+// To transform a string of ES6 code, call require("progenerator")(source);
+module.exports = progenerator;
